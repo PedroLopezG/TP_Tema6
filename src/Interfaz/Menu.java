@@ -1,13 +1,11 @@
 package Interfaz;
 
-import Ejercicios.Mayor;
-import Ejercicios.MiniBarcosv2;
-import Ejercicios.Tabla;
+import Ejercicios.*;
 
 import java.util.Scanner;
 
 public class Menu {
-    public void selectorEjercicios(Scanner teclado) throws Exception {
+    public void selectorEjercicios(Scanner teclado) {
         int seleccion = 0;
         while (seleccion != 6) {
 
@@ -26,7 +24,14 @@ public class Menu {
                     Tabla tabla = new Tabla();
                     tabla.queFuncion(teclado);
                     break;
-
+                case 4:
+                    Ovejas ovejas = new Ovejas();
+                    ovejas.juego(teclado);
+                    break;
+                case 5:
+                    Taller taller = new Taller();
+                    taller.dibujos(teclado);
+                    break;
                 case 6:
                     System.out.println("Saliendo . . .");
                     break;
