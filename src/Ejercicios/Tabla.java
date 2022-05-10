@@ -4,8 +4,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Tabla {
-    int t = 10;
-    int[] tabla = new int[t];
+    int t;
     int min;
     int max;
 
@@ -18,18 +17,21 @@ public class Tabla {
             seleccion = teclado.nextInt();
             switch (seleccion) {
                 case 1:
-
+                    t = 10;
+                    int[] tabla = new int[t];
                     teclado.nextLine();
                     System.out.println("limite minimo: ");
                     min = teclado.nextInt();
                     System.out.println("limite maximo: ");
                     max = teclado.nextInt();
-                    funcion1(t, min, max);
+                    funcion1(t, min, max, tabla);
                     for (int i = 0; i < tabla.length; i++) {
                         System.out.print("-" + tabla[i]);
                     }
+                    System.out.print("-");
                     break;
                 case 2:
+
                     teclado.nextLine();
                     System.out.println("Tamaño de la tabla: ");
                     t = teclado.nextInt();
@@ -37,12 +39,14 @@ public class Tabla {
                     min = teclado.nextInt();
                     System.out.println("limite maximo: ");
                     max = teclado.nextInt();
-                    funcion1(t, min, max);
+                    int[] tabla2 = new int[t];
+                    funcion1(t, min, max , tabla2);
                     System.out.println("");
-                    for (int i = 0; i < tabla.length; i++) {
-                        System.out.print("-" + tabla[i]);
+                    for (int i = 0; i < tabla2.length; i++) {
+                        System.out.print("-" + tabla2[i]);
                     }
-                    funcion2(t);
+                    System.out.print("-");
+                    funcion2(t, tabla2);
                     break;
 
                 case 3:
@@ -55,24 +59,24 @@ public class Tabla {
         }
 
     }
-    public void funcion1(int t, int min, int max) {
+    public void funcion1(int t, int min, int max, int[] tabla) {
         if (t == 0) {
             System.out.println("Tabla creada");
         } else {
             tabla[t - 1] = (int) (Math.random() * (max + 1 - min)) + min;
-            funcion1(t - 1, min, max);
+            funcion1(t - 1, min, max, tabla);
         }
 
 
     }
-    public void funcion2(int t) {
-        int mayor = t;
-        for (int i = 0; i < tabla.length; i++) {
-            if (tabla[i] > mayor) {
-                mayor = tabla[i];
+    public void funcion2(int t, int[] tabla) {
+        int mayor = 0;
+        for (int i : tabla) {
+            if (i > mayor) {
+                mayor = i;
             }
         }
-        System.out.println("El mayor es: " + mayor);
+        System.out.println("\nEl mayor es: " + mayor);
     }
 
     private static void menu () {
